@@ -10,17 +10,21 @@ const getNonce = async (publicAddress: string) => {
   return response.data
 }
 
-const getToken = async (nonce: string, signature: string) => {
+const getToken = async (publicAddress: string, signature: string) => {
   const response = await query.post('/auth/token', {
-    nonce,
+    publicAddress,
     signature,
   })
 
   return response.data
 }
 
-const getOwnedNFT = async () => {
-  const response = await query.get('/users/nfts')
+const getOwnedNFT = async (token: string) => {
+  const response = await query.get('/users/nfts', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
   return response.data
 }
 

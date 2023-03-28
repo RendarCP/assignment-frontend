@@ -2,9 +2,10 @@ import '@/index.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import React, { lazy } from 'react'
+import { lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
 
 import reportWebVitals from '@/reportWebVitals'
 
@@ -30,12 +31,14 @@ const queryClient = new QueryClient({
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
     </QueryClientProvider>
-  </React.StrictMode>,
+  </RecoilRoot>,
+  // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function

@@ -8,4 +8,9 @@ const userState = atom({
   },
 })
 
-export { userState }
+const isLogined = atom({
+  key: 'isLogined',
+  default: false,
+})
+
+export { isLogined, userState }

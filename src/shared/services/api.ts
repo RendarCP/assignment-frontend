@@ -20,6 +20,7 @@ const getToken = async (publicAddress: string, signature: string) => {
 }
 
 const getOwnedNFT = async (token: string) => {
+  console.log('=====================', token)
   const response = await query.get('/users/nfts', {
     headers: {
       Authorization: `Bearer ${token}`,

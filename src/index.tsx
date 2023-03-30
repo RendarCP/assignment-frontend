@@ -2,19 +2,26 @@ import '@/index.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
 import reportWebVitals from '@/reportWebVitals'
 
+import Loader from './components/design/Loader'
+
 const Home = lazy(() => import('@/pages/Home'))
+const Account = lazy(() => import('@/pages/Account'))
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: '/account',
+    element: <Account />,
   },
 ])
 
@@ -35,7 +42,9 @@ root.render(
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </QueryClientProvider>
   </RecoilRoot>,
   // </React.StrictMode>,

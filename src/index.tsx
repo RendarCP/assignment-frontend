@@ -10,6 +10,7 @@ import { RecoilRoot } from 'recoil'
 import reportWebVitals from '@/reportWebVitals'
 
 import Loader from './components/design/Loader'
+import Transfer from './pages/Transfer'
 
 const Home = lazy(() => import('@/pages/Home'))
 const Account = lazy(() => import('@/pages/Account'))
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/account',
     element: <Account />,
+  },
+  {
+    path: '/transfer',
+    element: <Transfer />,
   },
 ])
 

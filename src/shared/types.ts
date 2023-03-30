@@ -6,6 +6,8 @@ interface IAuthType {
 interface IAItemProps {
   name: string
   dateTime: string
+  address: string
+  tokenId: string
 }
 
 export type { IAItemProps, IAuthType }

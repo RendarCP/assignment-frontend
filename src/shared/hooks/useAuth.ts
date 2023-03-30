@@ -43,6 +43,7 @@ const useAuth = (): ReturnType => {
       token: token.data.access_token,
     }
     setUser(userData)
+    setIsLogin(true)
     localStorage.setItem(LOGIN_USER, JSON.stringify(userData))
   }, [])
 
